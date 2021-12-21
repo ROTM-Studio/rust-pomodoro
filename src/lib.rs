@@ -38,9 +38,9 @@ pub fn pomodoro(
         for i in (0..focus_in_second).rev() {
             let minute_remaining = i / 60;
             let second_remaining = i % 60;
-            stdout.flush().unwrap();
             print!("\r{}:{} - Focus ", minute_remaining, second_remaining);
-            thread::sleep(Duration::from_millis(100));
+            stdout.flush().unwrap();
+            thread::sleep(Duration::from_secs(1));
         }
 
         if i == config.session - 1 {
@@ -57,9 +57,9 @@ pub fn pomodoro(
         for i in (0..break_in_second).rev() {
             let minute_remaining = i / 60;
             let second_remaining = i % 60;
-            stdout.flush().unwrap();
             print!("\r{}:{} - Break ", minute_remaining, second_remaining);
-            thread::sleep(Duration::from_millis(100));
+            stdout.flush().unwrap();
+            thread::sleep(Duration::from_secs(1));
         }
     }
 
