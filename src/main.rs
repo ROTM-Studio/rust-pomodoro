@@ -11,7 +11,6 @@ fn main() {
 
     thread::spawn(move || {
         config.pomodoro(is_done_sender, is_break_sender, is_start_sender);
-        // rust_pomodoro::pomodoro(config, is_done_sender, is_break_sender, is_start_sender)
     });
 
     loop {
