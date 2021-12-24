@@ -1,16 +1,16 @@
 use crossbeam::{channel::bounded, select};
-use rust_pomodoro::Config;
+use rust_pomodoro::Pomodoro;
 use std::{process, thread};
 
 fn main() {
-    let config = Config::new();
+    let pomodoro = Pomodoro::new();
 
     let (is_done_sender, is_done_receiver) = bounded(1);
     let (is_break_sender, is_break_receiver) = bounded(1);
     let (is_start_sender, is_start_receiver) = bounded(1);
 
     thread::spawn(move || {
-        config.pomodoro(is_done_sender, is_break_sender, is_start_sender);
+        pomodoro.run(is_done_sender, is_break_sender, is_start_sender);
     });
 
     loop {

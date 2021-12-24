@@ -9,7 +9,7 @@ use std::{
 
 #[derive(Parser)]
 #[clap(author, version, about)]
-pub struct Config {
+pub struct Pomodoro {
     #[clap(long, parse(try_from_str))]
     pub focus_time: u32,
     #[clap(long, parse(try_from_str))]
@@ -18,12 +18,12 @@ pub struct Config {
     pub session: u32,
 }
 
-impl Config {
-    pub fn new() -> Config {
-        Config::parse()
+impl Pomodoro {
+    pub fn new() -> Pomodoro {
+        Pomodoro::parse()
     }
 
-    pub fn pomodoro(&self, is_done: Sender<bool>, is_break: Sender<bool>, is_start: Sender<u32>) {
+    pub fn run(&self, is_done: Sender<bool>, is_break: Sender<bool>, is_start: Sender<u32>) {
         let focus_in_second = self.focus_time * 60;
         let break_in_second = self.break_time * 60;
 
