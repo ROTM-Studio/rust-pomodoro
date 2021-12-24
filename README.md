@@ -1,3 +1,8 @@
+<p float="center">
+<img src="https://user-images.githubusercontent.com/37602139/147357535-457319b4-7a14-41ee-b5b6-027d47b75bdc.gif" alt="gif" />
+</p>
+
+
 ```
 rust-pomodoro 0.1.0
 
