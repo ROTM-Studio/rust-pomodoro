@@ -40,7 +40,7 @@ impl Pomodoro {
                 let second_remaining = i % 60;
                 print!("\r{}:{} - Focus ", minute_remaining, second_remaining);
                 stdout.flush().unwrap();
-                thread::sleep(Duration::from_millis(100));
+                thread::sleep(Duration::from_secs(1));
             }
 
             if i == self.session - 1 {
@@ -59,7 +59,7 @@ impl Pomodoro {
                 let second_remaining = i % 60;
                 print!("\r{}:{} - Break ", minute_remaining, second_remaining);
                 stdout.flush().unwrap();
-                thread::sleep(Duration::from_millis(100));
+                thread::sleep(Duration::from_secs(1));
             }
         }
 
