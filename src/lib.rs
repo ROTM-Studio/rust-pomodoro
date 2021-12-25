@@ -15,7 +15,7 @@ pub struct Pomodoro {
     #[clap(long, parse(try_from_str))]
     pub break_time: u32,
     #[clap(long, parse(try_from_str))]
-    pub session: u32,
+    pub sesion: u32,
 }
 
 impl Pomodoro {
@@ -29,7 +29,7 @@ impl Pomodoro {
 
         let mut stdout = stdout();
 
-        for i in 0..self.session {
+        for i in 0..self.sesion {
             is_start.send(i + 1).unwrap();
 
             print!("\x1b[41m");
@@ -43,7 +43,7 @@ impl Pomodoro {
                 thread::sleep(Duration::from_secs(1));
             }
 
-            if i == self.session - 1 {
+            if i == self.sesion - 1 {
                 stdout.flush().unwrap();
                 print!("\r");
                 break;
