@@ -74,4 +74,9 @@ pub fn notify(message: String) {
         .arg(message)
         .spawn()
         .expect("failed to execute process");
+
+    Command::new("paplay")
+        .arg("complete.oga")
+        .spawn()
+        .expect("failed to execute process");
 }
