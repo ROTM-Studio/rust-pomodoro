@@ -27,6 +27,8 @@ impl Pomodoro {
         let focus_in_second = self.focus_time * 60;
         let break_in_second = self.break_time * 60;
 
+        let calculate_minute_and_second_remaining = |i: u32| -> (u32, u32) { (i / 60, i % 60) };
+
         let mut stdout = stdout();
 
         for i in 0..self.sesion {
@@ -36,9 +38,8 @@ impl Pomodoro {
             print!("\x1b[37m");
 
             for i in (0..focus_in_second).rev() {
-                let minute_remaining = i / 60;
-                let second_remaining = i % 60;
-                print!("\r{}:{} - Focus ", minute_remaining, second_remaining);
+                let (minute, second) = calculate_minute_and_second_remaining(i);
+                print!("\r{}:{} - Focus ", minute, second);
                 stdout.flush().unwrap();
                 thread::sleep(Duration::from_secs(1));
             }
@@ -55,9 +56,8 @@ impl Pomodoro {
             print!("\x1b[30m");
 
             for i in (0..break_in_second).rev() {
-                let minute_remaining = i / 60;
-                let second_remaining = i % 60;
-                print!("\r{}:{} - Break ", minute_remaining, second_remaining);
+                let (minute, second) = calculate_minute_and_second_remaining(i);
+                print!("\r{}:{} - Break ", minute, second);
                 stdout.flush().unwrap();
                 thread::sleep(Duration::from_secs(1));
             }
