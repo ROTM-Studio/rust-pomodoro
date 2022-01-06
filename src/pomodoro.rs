@@ -2,7 +2,6 @@ use clap::Parser;
 use crossbeam::channel::Sender;
 use std::{
     io::{stdout, Write},
-    process::Command,
     thread,
     time::Duration,
 };
@@ -65,18 +64,4 @@ impl Pomodoro {
 
         is_done.send(true).unwrap();
     }
-}
-
-pub fn notify(message: String) {
-    Command::new("notify-send")
-        .arg("-t")
-        .arg("3000")
-        .arg(message)
-        .spawn()
-        .expect("failed to execute process");
-
-    Command::new("paplay")
-        .arg("complete.oga")
-        .spawn()
-        .expect("failed to execute process");
 }
